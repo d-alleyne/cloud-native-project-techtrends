@@ -6,9 +6,7 @@ metadata:
   name: techtrends
   namespace: {{ .Values.namespace.name }}
 spec:
-  ports:
-  - name: techtrends-ports
-    {{ .Values.service }}
+  ports: {{ .Values.service }}
   selector:
     app: techtrends
   type: ClusterIP
