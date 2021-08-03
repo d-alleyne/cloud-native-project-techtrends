@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: techtrends
+  name: techtrends
+  namespace: {{ .Values.namespace.name }}
+spec:
+  ports:
+  - name: techtrends-ports
+    {{ .Values.service }}
+  selector:
+    app: techtrends
+  type: ClusterIP
+status:
+  loadBalancer: {}
