@@ -21,7 +21,8 @@ spec:
         name: techtrends
         ports:
         - containerPort: {{ .Values.containerPort }}
-        resources: {{ .Values.resources }}
+        resources: 
+          {{- toYaml .Values.resources | nindent 11 }}
         readinessProbe:
           httpGet:
             path: {{ .Values.readinessProbe.path }}
