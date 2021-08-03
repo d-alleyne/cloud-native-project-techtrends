@@ -15,5 +15,5 @@ In this project, I'm the Platform Engineer, tasked with taking an existing Flask
 * Used Helm Chart `apiVersion: v2`, as this is the default value when initialized using `helm create`. Also, `helm lint` fails whenever it was set to `v1`.
 * The Vagrantfile was updated as follows:
   * OpenSUSE Leap [15.3](Vagrantfile#L15)
-  * Use a different [IP](Vagrantfile#L#39) for the guest OS from the one suggested as it was unavailable.
+  * Use a different [IP](Vagrantfile#L39) for the guest OS from the one suggested as it was unavailable.
   * Installing k3s, helm and argocd on `vagrant up` using the [shell provisioning](https://www.vagrantup.com/docs/provisioning/shell).
