@@ -6,11 +6,12 @@ metadata:
   name: techtrends
   namespace: {{ .Values.namespace.name }}
 spec:
-  ports:
-  - name: techtrends-ports
-    {{ .Values.service }}
+  ports: 
+   - port: {{ .Values.service.port }}
+     protocol: {{ .Values.service.protocol }}
+     targetPort: {{ .Values.service.targetPort }}
   selector:
     app: techtrends
-  type: ClusterIP
+  type: {{ .Values.service.type }}
 status:
   loadBalancer: {}
