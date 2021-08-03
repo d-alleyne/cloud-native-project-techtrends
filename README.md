@@ -11,7 +11,8 @@ In this project, I'm the Platform Engineer, tasked with taking an existing Flask
 
 ### Changes from the base application
 
-* Used `Python 3` for the [Docker base image](Dockerfile#L1) instead of `Python 2`. This was required as `f-strings` were used for application [logging](techtrends/app.py#L59). F-strings requires Python 3.6 or newer. See https://realpython.com/python-f-strings/
+* Used `Python 3` for the [Docker base image](Dockerfile#L1) instead of `Python 2`. This was required as `f-strings` were used for application [logging](techtrends/app.py#L59). F-strings requires Python `3.6` or newer. See https://realpython.com/python-f-strings/
+* Used Helm Chart `apiVersion: v2`, as this is the default value when initialized using `helm create`. Also, `helm lint` fails whenever it was set to `v1`.
 * The Vagrantfile was updated as follows:
   * OpenSUSE Leap [15.3](Vagrantfile#L15)
   * Use a different [IP](Vagrantfile#L#39) for the guest OS from the one suggested as it was unavailable.
