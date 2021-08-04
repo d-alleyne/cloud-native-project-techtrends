@@ -3,14 +3,20 @@ import sqlite3
 import logging
 from flask import Flask, render_template, request, url_for, redirect, flash, json
 
+# This variable stores the number of connections made to the database
+# and will be viewed by at the /metrics endpoint
+connection_count = 0
+
 # Function to get a database connection.
 # This function connects to database with the name `database.db`
 DATABASE_FILE = './database.db'
 
 def get_db_connection():
+    global connection_count
     app.logger.debug(f'Connecting to database file {DATABASE_FILE}')
     try:
         connection = sqlite3.connect(DATABASE_FILE)
+        connection_count += 1
         result = connection.execute("SELECT COUNT(name) FROM sqlite_master WHERE name='posts'").fetchone()
         if result[0] != 1:
             message = "The required database table 'posts' is missing"
@@ -102,7 +108,7 @@ def metrics():
         post_count = posts[0]
 
     return {
-        'db_connection_count': 1,
+        'db_connection_count': connection_count,
         'post_count': post_count
     }
 

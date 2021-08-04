@@ -17,22 +17,12 @@ spec:
         app: techtrends
     spec:
       containers:
-      - image: "{{ $.Values.image.repository }}:{{ $.Values.image.tag }}"
-        name: techtrends
-        ports:
-        - containerPort: {{ .Values.containerPort }}
-        resources: 
-          {{- toYaml .Values.resources | nindent 11 }}
-        readinessProbe:
-          httpGet:
-            path: {{ .Values.readinessProbe.path }}
-            port: {{ .Values.containerPort }}
-        livenessProbe:
-          httpGet:
-              path: {{ .Values.livenessProbe.path }}
-              port: {{ .Values.containerPort }}
-          
-            
-
-            
-
+        - image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          name: techtrends
+          ports:
+            - containerPort: {{ .Values.containerPort }}
+          resources: {{- toYaml .Values.resources | nindent 12 }}
+          readinessProbe:
+            httpGet: {{- toYaml .Values.readinessProbe | nindent 14 }}
+          livenessProbe:
+            httpGet: {{- toYaml .Values.livenessProbe | nindent 14 }}
