@@ -71,5 +71,6 @@ Vagrant.configure("2") do |config|
     ./get_helm.sh
     kubectl create namespace argocd
     kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+    kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "NodePort", "ports": [{"port": 80, "nodePort": 30007}, {"port": 443, "nodePort": 30008}]}}'
   SHELL
 end

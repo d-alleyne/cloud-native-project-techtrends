@@ -17,3 +17,4 @@ In this project, I'm the Platform Engineer, tasked with taking an existing Flask
   * OpenSUSE Leap [15.3](Vagrantfile#L15)
   * Use a different [IP](Vagrantfile#L39) for the guest OS from the one suggested as it was unavailable.
   * Installing k3s, helm and argocd on `vagrant up` using the [shell provisioning](https://www.vagrantup.com/docs/provisioning/shell).
+  * Patch the argocd server by changing it from ClusterIP to NodePort, and exposing the relevant port
